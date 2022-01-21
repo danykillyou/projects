@@ -1,0 +1,16 @@
+node('ubuntu') {
+
+    stage('Preparation') {
+        // Get some code from a GitHub repository
+        git 'https://github.com/danykillyou/devalore.git'
+        sh 'sudo docker build devalore -t devalore'
+    }
+    stage('Build') {
+        // Run the build
+        sh 'sudo docker run devalore'
+
+    }
+    stage('Results') {
+       echo "all good"
+    }
+}
